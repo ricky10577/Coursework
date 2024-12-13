@@ -25,3 +25,15 @@ def ticket_purchase():
         if choice in locations:
             return choice, locations[choice]
         print("Invalid choice. Please try again.")
+
+def main():
+    name = input("\nPlease enter lead passenger name: ")
+
+    choice, (location, price) = ticket_purchase()
+    quantity = quantity_prompt()
+    cost = price * quantity 
+    print(f"\n{name}, \nYou have chosen {quantity} ticket(s) to {location}.")
+    print(f"\nTotal cost: {quantity} x £{price:.2f} = £{cost:.2f}")
+    
+if __name__ == "__main__":
+    main()
