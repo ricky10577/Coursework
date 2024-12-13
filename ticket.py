@@ -35,5 +35,28 @@ def main():
     print(f"\n{name}, \nYou have chosen {quantity} ticket(s) to {location}.")
     print(f"\nTotal cost: {quantity} x £{price:.2f} = £{cost:.2f}")
     
+    while True:
+        receipt_prompt = input("\nWould you like to print your receipt? (yes/no) ").lower()
+    
+        if receipt_prompt == 'yes': 
+            receipt_name = name + '.txt'   
+            receipt = open(receipt_name, "w")
+            receipt.write(f"Receipt of ticket purchase\n")
+            receipt.write(f"\nName of customer: {name}")
+            receipt.write(f"\nDestination: {location} ")
+            receipt.write(f"\nQuantity: {quantity} \n")
+            receipt.write(f"\nTotal Cost: {quantity} x (£{price:.2f}) = £{cost:.2f}\n")
+            receipt.write(f"\nThank you for your custom!")
+            receipt.close()
+            print("\nYour receipt has been generated!\nThank you for your custom!")
+            break 
+
+        elif receipt_prompt == 'no':    
+            print("Thank you for your custom!")    
+            break
+
+        else:    
+            print("Invalid choice, please try again")        
+
 if __name__ == "__main__":
     main()
